@@ -5,6 +5,6 @@ module.exports = {
       isolatedModules: true,
     },
   },
-  // collectCoverage: true,
-  // collectCoverageFrom: ['<rootDir>/src/components/**/*.vue', '<rootDir>/src/views/**/*.vue'],
+  collectCoverage: true,
+  collectCoverageFrom: ['<rootDir>/src/components/**/*.vue', '<rootDir>/src/views/**/*.vue'],
 }

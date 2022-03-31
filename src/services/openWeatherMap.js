@@ -1,9 +1,11 @@
 import axios from 'axios'
+import httpAdapter from 'axios/lib/adapters/http'
 
 const API_KEY = '0d8aa4b5581a5331b53fe1c53c106c4f'
 
 const http = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5/',
+  adapter: httpAdapter,
 })
 
 export async function getWeatherForecast(city) {

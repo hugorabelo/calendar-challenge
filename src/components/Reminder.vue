@@ -12,6 +12,7 @@
         <div class="p-4 divide-y">
           <div class="text-right">
             <button
+              v-if="!isEditing"
               id="btn-edit-reminder"
               class="rounded-full h-10 w-10 hover:bg-gray-200 text-gray-500"
               @click="editReminder()"
@@ -19,6 +20,7 @@
               <font-awesome-icon icon="fa-solid fa-edit" />
             </button>
             <button
+              v-if="!isEditing"
               id="btn-delete-reminder"
               class="rounded-full h-10 w-10 hover:bg-gray-200 text-gray-500"
               @click="deleteReminder()"
@@ -34,7 +36,7 @@
             </button>
           </div>
           <div v-if="isEditing" class="mt-1 pt-3">
-            <!-- Reminder Form -->
+            <reminder-form :editing-reminder="currentReminder" @save="saveEdit" @cancel="cancelEdit"></reminder-form>
           </div>
           <div v-else class="grid grid-cols-3 mt-1 pt-2">
             <div class="col-span-2 text-left">
@@ -56,7 +58,10 @@
             </div>
             <div class="flex mt-3 items-center">
               <div class="flex flex-col float-right mx-auto mr-0">
-                <div class="flex w-16 h-16 rounded-full bg-gray-600 bg-opacity-20 justify-center items-center mx-auto">
+                <div
+                  class="flex w-16 h-16 rounded-full bg-opacity-40 justify-center items-center mx-auto"
+                  :class="currentReminder.color"
+                >
                   <img
                     v-if="currentReminder.weatherIcon"
                     :src="`http://openweathermap.org/img/wn/${currentReminder.weatherIcon}@2x.png`"
@@ -68,18 +73,26 @@
             </div>
           </div>
         </div>
-        <div v-if="currentReminder.color" class="h-7 rounded-lg border" :class="currentReminder.color"></div>
+        <div
+          v-if="currentReminder.color && !isEditing"
+          class="h-7 rounded-lg border"
+          :class="currentReminder.color"
+        ></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ReminderForm from './ReminderForm.vue'
 import dateTimeMixins from '@/mixins/dateTimeMixins'
 import * as reminderApi from '@/services/reminders'
 
 export default {
   name: 'Reminder',
+  components: {
+    ReminderForm,
+  },
   mixins: [dateTimeMixins],
   props: {
     reminderData: {
@@ -109,6 +122,7 @@ export default {
   },
   methods: {
     async viewDetails() {
+      this.isEditing = false
       this.showDetails = true
     },
     closeDetails() {
@@ -117,12 +131,13 @@ export default {
     editReminder() {
       this.isEditing = true
     },
-    // cancelEdit() {
-    //   this.isEditing = false
-    // },
-    // async saveEdit() {
-    //   this.isEditing = false
-    // },
+    cancelEdit() {
+      this.isEditing = false
+    },
+    async saveEdit(newReminder) {
+      this.currentReminder = newReminder
+      this.isEditing = false
+    },
     async deleteReminder() {
       await reminderApi.deleteReminder(this.currentReminder)
       this.showDetails = false

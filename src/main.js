@@ -3,12 +3,23 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSun, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import {
+  faBan,
+  faChevronLeft,
+  faChevronRight,
+  faXmark,
+  faEdit,
+  faTrash,
+  faTag,
+  faCalendar,
+  faLocationDot,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import './assets/styles/tailwind.css'
 
-library.add(faSun, faChevronLeft, faChevronRight)
+library.add(faBan, faChevronLeft, faChevronRight, faXmark, faEdit, faTrash, faTag, faCalendar, faLocationDot)
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false

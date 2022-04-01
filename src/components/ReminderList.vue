@@ -9,7 +9,7 @@
         class="text-red-700 border border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800"
         @click="deleteAllReminders()"
       >
-        <font-awesome-icon icon="fa-solid fa-calendar-xmark " size="sm" />
+        <font-awesome-icon icon="fa-solid fa-calendar-xmark" size="sm" />
       </button>
     </span>
   </div>

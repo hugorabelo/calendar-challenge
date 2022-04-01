@@ -57,3 +57,10 @@ Calendar has a Header, where it have a title for selected month and some buttons
 Below header exists a list of days as a table. Inside days we can have some reminders labels. Feature:
 - When mouse is hovering day that has some reminders, user can see a button to delete all reminder for that specific day
 - If user clicks on label, a new dialog is opened with reminder details, including weather forecast, and buttons to edit or remove selected reminder
+
+### Screenshots
+
+![Screen Shot 01](https://raw.githubusercontent.com/hugorabelo/calendar-challenge/main/public/screenshots/01.png)
+![Screen Shot 02](https://raw.githubusercontent.com/hugorabelo/calendar-challenge/main/public/screenshots/02.png)
+![Screen Shot 03](https://raw.githubusercontent.com/hugorabelo/calendar-challenge/main/public/screenshots/03.png)
+![Screen Shot 04](https://raw.githubusercontent.com/hugorabelo/calendar-challenge/main/public/screenshots/04.png)

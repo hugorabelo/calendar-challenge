@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reminder Click Dialog Buttons 1`] = `
+<div>
+  <div class="reminder-description text-sm md:text-base text-white rounded cursor-pointer mb-1">
+
+  </div>
+  <!---->
+</div>
+`;
+
+exports[`Reminder Delete Reminder 1`] = `
+<div>
+  <div class="reminder-description text-sm md:text-base text-white rounded cursor-pointer mb-1">
+
+  </div>
+  <!---->
+</div>
+`;

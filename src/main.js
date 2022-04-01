@@ -3,13 +3,41 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSun } from '@fortawesome/free-solid-svg-icons'
+import {
+  faBan,
+  faChevronLeft,
+  faChevronRight,
+  faXmark,
+  faEdit,
+  faTrash,
+  faNoteSticky,
+  faCalendar,
+  faLocationDot,
+  faCalendarXmark,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { Datetime } from 'vue-datetime'
 
 import './assets/styles/tailwind.css'
+import 'vue-datetime/dist/vue-datetime.css'
 
-library.add(faSun)
+library.add(
+  faBan,
+  faChevronLeft,
+  faChevronRight,
+  faXmark,
+  faEdit,
+  faTrash,
+  faNoteSticky,
+  faCalendar,
+  faLocationDot,
+  faCalendarXmark,
+  faPlus
+)
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('datetime', Datetime)
 
 Vue.config.productionTip = false
 

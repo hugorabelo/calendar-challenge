@@ -3,13 +3,14 @@ import Vuex from 'vuex'
 import CalendarHeader from '@/components/CalendarHeader'
 import { DateTime } from 'luxon'
 import dateInfo from '@/store/modules/dateInfo'
+import reminderStorage from '@/store/modules/reminderStorage'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSun, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faChevronRight, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-library.add(faSun, faChevronLeft, faChevronRight)
+library.add(faChevronLeft, faChevronRight, faPlus)
 localVue.component('font-awesome-icon', FontAwesomeIcon)
 
 describe('CalendarHeader', () => {
@@ -19,6 +20,7 @@ describe('CalendarHeader', () => {
       store: new Vuex.Store({
         modules: {
           dateInfo: { ...dateInfo },
+          reminderStorage: { ...reminderStorage },
         },
       }),
       ...options,

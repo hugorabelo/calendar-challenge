@@ -9,9 +9,8 @@ const http = axios.create({
 })
 
 export async function getWeatherForecast(city) {
-  let { data } = await this.getCityGeoLocation(city)
   let excluded = 'current,alerts,minutely,hourly'
-  return await http.get(`onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=${excluded}&appid=${API_KEY}`)
+  return await http.get(`onecall?lat=${city.coord.lat}&lon=${city.coord.lon}&exclude=${excluded}&appid=${API_KEY}`)
 }
 
 export function getWeatherForecastByGeoLocation(geoLocation) {

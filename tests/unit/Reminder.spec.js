@@ -6,11 +6,19 @@ import dateInfo from '@/store/modules/dateInfo'
 import reminderStorage from '@/store/modules/reminderStorage'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBan, faEdit, faTrash, faXmark } from '@fortawesome/free-solid-svg-icons'
+import {
+  faBan,
+  faEdit,
+  faTrash,
+  faXmark,
+  faNoteSticky,
+  faCalendar,
+  faLocationDot,
+} from '@fortawesome/free-solid-svg-icons'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-library.add(faBan, faEdit, faTrash, faXmark)
+library.add(faBan, faEdit, faTrash, faXmark, faNoteSticky, faCalendar, faLocationDot)
 localVue.component('font-awesome-icon', FontAwesomeIcon)
 
 describe('Reminder', () => {

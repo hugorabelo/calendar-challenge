@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import Day from '@/components/Day'
 import { DateTime } from 'luxon'
 import dateInfo from '@/store/modules/dateInfo'
+import reminderStorage from '@/store/modules/reminderStorage'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -14,6 +15,7 @@ describe('Day', () => {
       store: new Vuex.Store({
         modules: {
           dateInfo: { ...dateInfo },
+          reminderStorage: { ...reminderStorage },
         },
       }),
       ...options,

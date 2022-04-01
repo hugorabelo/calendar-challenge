@@ -134,13 +134,17 @@ export default {
   },
   methods: {
     async save() {
-      let { data } = await weatherApi.getWeatherForecast(this.formData.city)
+      let { data } = await weatherApi.getCityGeoLocation(this.formData.city)
+
+      let weatherDetails = await weatherApi.getWeatherForecast(data)
+      weatherDetails = weatherDetails.data
+
       this.formData.weatherForecast = ''
       this.formData.weatherIcon = ''
       let countDays = await this.countDaysFromNow(this.dateTimeISO)
-      if (countDays <= data.daily.length) {
-        this.formData.weatherForecast = data.daily[countDays].weather[0].description
-        this.formData.weatherIcon = data.daily[countDays].weather[0].icon
+      if (countDays <= weatherDetails.daily.length) {
+        this.formData.weatherForecast = weatherDetails.daily[countDays].weather[0].description
+        this.formData.weatherIcon = weatherDetails.daily[countDays].weather[0].icon
       }
       this.formData.dateTime = this.dateTimeISO
       if (this.formData.description.length > 30) {

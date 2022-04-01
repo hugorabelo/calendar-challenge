@@ -1,35 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CalendarHeader Click buttons 1`] = `
-<div class="header flex items-center p-4"><button id="btn-today" class="border rounded-md h-10 border-color-gray-200 hover:bg-gray-200 p-2 mr-6">
+<div class="header flex items-center p-4"><button id="btn-today" class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
     Today
   </button> <button id="btn-previous" class="rounded-full h-10 w-10 hover:bg-gray-200 mr-1"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-left">
       <path fill="currentColor" d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z" class=""></path>
-    </svg></button> <button id="btn-next" class="rounded-full h-10 w-10 hover:bg-gray-200 mr-8"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-right">
+    </svg></button> <button id="btn-next" class="rounded-full h-10 w-10 hover:bg-gray-200 mr-2 md:mr-8"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-right">
       <path fill="currentColor" d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z" class=""></path>
     </svg></button>
   <div class="text-3xl md:text-3xl hidden md:flex long-title">
-    março de 2022
+    abril de 2022
   </div>
-  <div class="text-lg md:text-3xl md:hidden short-title">
-    mar. de 2022
-  </div>
+  <div class="md:text-3xl md:hidden short-title">
+    abr. de 2022
+  </div> <button id="btn-add-reminder" class="hidden md:flex mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+    Add New Reminder
+  </button> <button type="button" class="mx-auto mr-0 md:hidden text-white border bg-blue-700 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-plus">
+      <path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z" class=""></path>
+    </svg></button>
 </div>
 `;
 
 exports[`CalendarHeader Header title is working 1`] = `
-<div class="header flex items-center p-4"><button id="btn-today" class="border rounded-md h-10 border-color-gray-200 hover:bg-gray-200 p-2 mr-6">
+<div class="header flex items-center p-4"><button id="btn-today" class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
     Today
   </button> <button id="btn-previous" class="rounded-full h-10 w-10 hover:bg-gray-200 mr-1"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-left">
       <path fill="currentColor" d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z" class=""></path>
-    </svg></button> <button id="btn-next" class="rounded-full h-10 w-10 hover:bg-gray-200 mr-8"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-right">
+    </svg></button> <button id="btn-next" class="rounded-full h-10 w-10 hover:bg-gray-200 mr-2 md:mr-8"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-chevron-right">
       <path fill="currentColor" d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z" class=""></path>
     </svg></button>
   <div class="text-3xl md:text-3xl hidden md:flex long-title">
-    março de 2022
+    abril de 2022
   </div>
-  <div class="text-lg md:text-3xl md:hidden short-title">
-    mar. de 2022
-  </div>
+  <div class="md:text-3xl md:hidden short-title">
+    abr. de 2022
+  </div> <button id="btn-add-reminder" class="hidden md:flex mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+    Add New Reminder
+  </button> <button type="button" class="mx-auto mr-0 md:hidden text-white border bg-blue-700 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-plus">
+      <path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z" class=""></path>
+    </svg></button>
 </div>
 `;

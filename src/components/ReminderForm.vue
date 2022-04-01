@@ -59,7 +59,7 @@
       <button
         id="btn-save"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        @click="saveEdit()"
+        @click="save()"
       >
         Save
       </button>
@@ -123,12 +123,17 @@ export default {
       ],
     }
   },
+  computed: {
+    isEdit() {
+      return this.formData.id !== null
+    },
+  },
   methods: {
-    async saveEdit() {
+    async save() {
       let { data } = await weatherApi.getWeatherForecast(this.formData.city)
       this.formData.weatherForecast = ''
       this.formData.weatherIcon = ''
-      let countDays = await this.countDaysFromNow(this.formData.dateTime)
+      let countDays = await this.countDaysFromNow(this.dateTimeISO)
       if (countDays <= data.daily.length) {
         this.formData.weatherForecast = data.daily[countDays].weather[0].description
         this.formData.weatherIcon = data.daily[countDays].weather[0].icon
@@ -137,7 +142,12 @@ export default {
       if (this.formData.description.length > 30) {
         this.formData.description = this.formData.description.substring(0, 30)
       }
-      await reminderApi.updateReminder(this.formData)
+      if (this.isEdit) {
+        await reminderApi.updateReminder(this.formData)
+      } else {
+        this.formData.id = this.guid()
+        await reminderApi.addReminder(this.formData)
+      }
       let currentReminder = {
         ...this.formData,
         dateTime: this.getObjectDateTime(this.formData.dateTime),
@@ -146,6 +156,27 @@ export default {
     },
     async cancelEdit() {
       this.$emit('cancel')
+    },
+    guid() {
+      return (
+        this.s4() +
+        this.s4() +
+        '-' +
+        this.s4() +
+        '-' +
+        this.s4() +
+        '-' +
+        this.s4() +
+        '-' +
+        this.s4() +
+        this.s4() +
+        this.s4()
+      )
+    },
+    s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1)
     },
   },
 }

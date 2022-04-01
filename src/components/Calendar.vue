@@ -1,9 +1,17 @@
 <template>
   <div class="container mx-auto">
-    <calendar-header @today="today()" @previousMonth="previousMonth()" @nextMonth="nextMonth()"></calendar-header>
-    <div class="grid grid-cols-7 border border-gray-300 h-screen">
+    <calendar-header
+      @today="today()"
+      @previousMonth="previousMonth()"
+      @nextMonth="nextMonth()"
+      @addReminder="addReminder()"
+    ></calendar-header>
+    <div class="grid grid-cols-7 border border-gray-300 h-screen-adjust">
       <day v-for="(day, index) in days" :fullDate="day" :key="index"></day>
     </div>
+    <modal-dialog v-model="showDialogAddReminder" title="Add New Reminder" @close="closeDialogAddReminder">
+      <reminder-form @save="saveNewReminder()" @cancel="closeDialogAddReminder"></reminder-form>
+    </modal-dialog>
   </div>
 </template>
 
@@ -12,16 +20,21 @@ import { Interval } from 'luxon'
 import CalendarHeader from './CalendarHeader'
 import Day from './Day'
 import { mapActions, mapGetters } from 'vuex'
+import ModalDialog from './ModalDialog.vue'
+import ReminderForm from './ReminderForm.vue'
 
 export default {
   name: 'Calendar',
   components: {
     CalendarHeader,
     Day,
+    ModalDialog,
+    ReminderForm,
   },
   data() {
     return {
       days: [],
+      showDialogAddReminder: false,
     }
   },
   computed: {
@@ -71,6 +84,18 @@ export default {
       this.goToNextMonth()
       this.fetchDaysOfSelectedMonth()
     },
+    addReminder() {
+      this.showDialogAddReminder = true
+    },
+    closeDialogAddReminder() {
+      this.showDialogAddReminder = false
+    },
+    saveNewReminder() {
+      this.closeDialogAddReminder()
+      this.fetchDaysOfSelectedMonth()
+    },
   },
 }
 </script>
+
+<style scoped></style>

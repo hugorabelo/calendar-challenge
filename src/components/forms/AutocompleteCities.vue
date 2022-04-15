@@ -76,6 +76,7 @@ export default {
     },
     async onChange() {
       if (this.search.length > 2) {
+        this.isLoading = true
         let { data } = await cityApi.getCities(this.search)
         this.items = []
         data.forEach((item) => {
@@ -84,12 +85,9 @@ export default {
 
         this.$emit('input', this.search)
 
-        if (this.isAsync) {
-          this.isLoading = true
-        } else {
-          this.filterResults()
-          this.isOpen = true
-        }
+        this.filterResults()
+        this.isOpen = true
+        this.isLoading = false
       }
     },
     handleClickOutside(event) {

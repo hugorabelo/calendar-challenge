@@ -4,13 +4,7 @@
       <reminder v-for="reminder of remindersForDay" :key="reminder.id" :reminderData="reminder"></reminder>
     </div>
     <span class="absolute top-0 right-0" v-if="showDeleteAll">
-      <button
-        type="button"
-        class="text-red-700 border border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800"
-        @click="deleteAllReminders()"
-      >
-        <font-awesome-icon icon="fa-solid fa-calendar-xmark" size="sm" />
-      </button>
+      <form-button color="danger" icon="fa-calendar-xmark" @click="deleteAllReminders()" size="sm"></form-button>
     </span>
   </div>
 </template>
@@ -18,13 +12,15 @@
 <script>
 import { DateTime } from 'luxon'
 import Reminder from './Reminder.vue'
+import FormButton from './forms/FormButton.vue'
 import dateTimeMixins from '@/mixins/dateTimeMixins'
-import * as reminderApi from '@/services/reminders'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'ReminderList',
   components: {
     Reminder,
+    FormButton,
   },
   mixins: [dateTimeMixins],
   props: {
@@ -40,20 +36,22 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['reminders']),
     remindersForDay() {
-      let reminders = reminderApi.getReminders().filter((reminder) => {
+      let remindersTemp = this.reminders.filter((reminder) => {
         let reminderDate = this.getObjectDateTime(reminder.dateTime).startOf('day')
         let currentDay = this.getObjectDateTime(this.date).startOf('day')
         return reminderDate.equals(currentDay)
       })
-      reminders.sort(this.compareTime)
-      return reminders
+      remindersTemp.sort(this.compareTime)
+      return remindersTemp
     },
     showDeleteAll() {
       return this.hovering && this.remindersForDay.length > 0
     },
   },
   methods: {
+    ...mapActions(['deleteRemindersGroup']),
     compareTime(a, b) {
       a = this.getObjectDateTime(a.dateTime)
       b = this.getObjectDateTime(b.dateTime)
@@ -66,7 +64,7 @@ export default {
       return 0
     },
     deleteAllReminders() {
-      reminderApi.deleteRemindersGroup(this.remindersForDay)
+      this.deleteRemindersGroup(this.remindersForDay)
     },
   },
 }

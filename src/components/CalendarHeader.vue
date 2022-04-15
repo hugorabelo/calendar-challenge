@@ -1,45 +1,45 @@
 <template>
   <div class="header flex items-center p-4">
-    <button
-      id="btn-today"
-      class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-      @click="goToToday()"
-    >
-      Today
-    </button>
-    <button id="btn-previous" class="rounded-full h-10 w-10 hover:bg-gray-200 mr-1" @click="goToPreviousMonth()">
-      <font-awesome-icon icon="fa-solid fa-chevron-left" />
-    </button>
-    <button id="btn-next" class="rounded-full h-10 w-10 hover:bg-gray-200 mr-2 md:mr-8" @click="goToNextMonth()">
-      <font-awesome-icon icon="fa-solid fa-chevron-right" />
-    </button>
+    <form-button id="btn-today" class="mr-2" color="secondary" @click="goToToday()">Today</form-button>
+    <form-button
+      id="btn-previous"
+      color="gray"
+      icon="fa-chevron-left"
+      size="1x"
+      @click="goToPreviousMonth()"
+    ></form-button>
+    <form-button
+      id="btn-previous"
+      color="gray"
+      icon="fa-chevron-right"
+      size="1x"
+      @click="goToNextMonth()"
+    ></form-button>
     <div class="text-3xl md:text-3xl hidden md:flex long-title">
       {{ headerLongTitle }}
     </div>
     <div class="md:text-3xl md:hidden short-title">
       {{ headerShortTitle }}
     </div>
-    <button
-      id="btn-add-reminder"
-      class="hidden md:flex mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      @click="addReminder()"
+    <form-button class="hidden md:flex mx-auto mr-0" color="primary" @click="addReminder()" size="sm"
+      >Add New Reminder</form-button
     >
-      Add New Reminder
-    </button>
-    <button
-      type="button"
-      class="mx-auto mr-0 md:hidden text-white border bg-blue-700 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
+    <form-button
+      class="md:hidden mx-auto mr-0"
+      color="primary"
       @click="addReminder()"
-    >
-      <font-awesome-icon icon="fa-solid fa-plus" />
-    </button>
+      icon="fa-plus"
+      size="1x"
+    ></form-button>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import FormButton from './forms/FormButton.vue'
 
 export default {
+  components: { FormButton },
   name: 'CalendarHeader',
   computed: {
     ...mapGetters(['selectedMonth']),

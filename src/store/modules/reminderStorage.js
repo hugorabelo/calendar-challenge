@@ -3,6 +3,9 @@ const state = {
 }
 const getters = {
   reminders: (state) => state.reminders,
+  reminderById: (state) => (id) => {
+    return state.reminders.find((reminder) => reminder.id == id)
+  },
 }
 const mutations = {
   setReminders(state, data) {
